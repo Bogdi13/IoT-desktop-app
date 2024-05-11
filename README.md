@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-Repository-ul contine doua proiecte C#, un proiect C++, un proiect Java si doua proiecte de IoT (la unul dintre ele s-a folosit Python)
-=======
-# IoT - Android Things - Team Project - Moldovan Bogdana 235/1 - Filipas Razvan 233/1
+# IoT - Android Things - Team Project
 
-## Monitorizarea temperaturii si a umiditatii intr-o incapere | Analizarea datelor colectate
+## Room Temperature and Humidity Monitoring | Data Analysis
+The program constantly collects data about temperature and humidity and stores it in a database. Then, it calculates the average temperature and humidity for the last 24 hours and for the last hour. These data can be later used to analyze and monitor temperature and humidity levels in a specific location. Additionally, the program alerts when the temperature or humidity does not fall within certain parameters.
 
-Programul colectează constant date despre temperatura și umiditate și le stochează într-o bază de date. Apoi, calculează media temperaturii și umidității pentru ultimele 24 de ore și pentru ultima oră. Aceste date pot fi utilizate ulterior pentru a analiza și monitoriza nivelurile de temperatură și umiditate într-o anumita locație. De aemenea, programul semnaleaza atunci cand temperatura sau umiditatea nu se incadreaza in diferiti parametrii.
-
-Am stabilit ca temperatura standard intr-o incapere sa fie cuprinsa intre 18 si 24 grade Celsius, iar umiditatea intre 30% si 60%.
+We have established that the standard temperature in a room should be between 18 and 24 degrees Celsius, and the humidity between 30% and 60%.
 
 ## Short demo
 
@@ -30,23 +26,23 @@ https://user-images.githubusercontent.com/100224995/230480193-18ea0c15-bcef-4e45
 - Power supply cable
 
 ## Setup and build
-### Configurare hardware
-Montajul este realizat urmand uramtorii pasi:
-  1. se plaseaza modulul sensor de temperatura si umididate DHT11 pe breadboard
-  2. se fac conexiunile cu placa Arduino UNO, folosind fire de tip "tata-tata", astfel:
-        a. pinul VCC al modulului se conecteaza la pinul 5V al placii Arduino (in acest caz, am folosit unul de culoare rosie)
-        b. pinul Signal al modulului se conecteaza la pinul Digital 7 al placii Arduino (in acest caz, am folosit unul  de culoare maro)
-        c. pinul GND al modulului se conecteaza la pinul GND al placii Arduino (in acest caz, am folosit unul de culoare neagra)
-  3. se face conexiunea cu un computer folosind un cablu de alimentare (in acest caz, am folosit un cablu cu mufa USB 3.0 pentru conectarea la computer si mufa USB B pentru conectarea la placa)
+### Hardware Setup
+The assembly is done following these steps:
+  1. place the DHT11 temperature and humidity sensor module on the breadboard.
+  2. make connections with the Arduino UNO board using "male-to-male" jumper wires as follows:
+      a. connect the VCC pin of the module to the 5V pin of the Arduino board (in this case, I used a red wire).
+      b. connect the Signal pin of the module to the Digital 7 pin of the Arduino board (in this case, I used a brown wire).
+      c. connect the GND pin of the module to the GND pin of the Arduino board (in this case, I used a black wire).
+  3. connect to a computer using a power cable (in this case, it was used a cable with a USB 3.0 plug for computer connection and a USB B plug for board connection).
 
 ### Configurare software
-Pentru testarea montajului la nivel software se foloseste Arduino IDE 2.x unde se selecteaza tipul placii folosite (Arduino Uno) si tipul portului utilizat (COM4)
+For testing the hardware assembly at the software level, Arduino IDE 2.x is used, where you select the type of board used (Arduino Uno) and the type of port used (COM4).
 
-Pentru dezvoltarea aplicatiei desktop se foloseste ca IDE PyCharm si ca limbaj de programare Python. Datele sunt stocate intr-o baza de date SQLite. Pentru furnizarea unei interfete s-a folosit biblioteca Tinker din Python.
+For desktop application development, PyCharm IDE and Python programming language are used. The data is stored in a SQLite database. The Tkinter library from Python was used to provide an interface.
 
-Aplicatia face analiza valorilor umiditatii si temperaturii, afisand in fereastra temperatura curenta, umiditatea curenta, temperatura medie din ultima ora, umiditatea medie din ultima ora si temperatura, respectiv umiditatea medie din ultimele 24 de ore. Daca umididatea are valori cuprinse intre 30% si 60% se afiseaza mesajul "Umiditate optima", iar daca temperatura are valori cuprinse intre 24 si 18 grade se afiseaza mesajul "Temperatura optima". Pentru temperaturi cu valoari mai mari de 24 de grade se afiseaza "Temperatura mare", iar pentru temperaturi cu valori mai mici de 18 grade se afiseaza "Temperatura mica". Asemenea si pentru umiditate: daca umiditatea depaseste 60%, se afiseaza "Umiditate mare", iar daca are valoare mai mica decat 30%, se afieaza "Umiditate mica".
+The application analyzes temperature and humidity values, displaying in the window the current temperature, current humidity, average temperature of the last hour, average humidity of the last hour, and average temperature, as well as humidity, of the last 24 hours. If the humidity values are between 30% and 60%, the message "Optimal Humidity" is displayed, and if the temperature values are between 24 and 18 degrees, the message "Optimal Temperature" is displayed. For temperatures above 24 degrees, "High Temperature" is displayed, and for temperatures below 18 degrees, "Low Temperature" is displayed. Similarly, for humidity: if the humidity exceeds 60%, "High Humidity" is displayed, and if it is below 30%, "Low Humidity" is displayed.
 
-## Cod sursa Arduino
+## Source code Arduino
 
 ```
 #include <dht.h>
@@ -256,4 +252,3 @@ def add_data(temperatura, umiditate):
     conn.close()
 
 ```
->>>>>>> 455be2b73eaf81535b1b63a8f905c6650ee1a4bd
