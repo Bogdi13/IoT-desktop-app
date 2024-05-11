@@ -1,0 +1,19 @@
+#include <dht.h>
+
+dht DHT;
+
+#define DHT11_PIN 7                     // Set pin 7 for reading
+
+void setup() {
+  Serial.begin(9600);                   // Set the serial begin
+  pinMode(DHT11_PIN, INPUT);            // Set the pin to input for reading data
+}
+
+void loop() {
+  DHT.read11(DHT11_PIN);                // Read the values of temperature and humidity from sensor
+  Serial.print(DHT.temperature);        // Print the temperature value
+  Serial.print(",");
+  Serial.print(DHT.humidity);           // Print the humidity value
+  Serial.println();
+  delay(1000);                          // Detect the values every 1 sec
+}
